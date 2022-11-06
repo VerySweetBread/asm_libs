@@ -1,9 +1,11 @@
 all: main
 
-main: ../../std.o ../../string.o ../../network.o ../../dns.o ../../dnstoys.o
-	fasm main.asm
+main: ../../std.o ../../string.o ../../network.o ../../dns.o ../../dnstoys.o main.o
 	ld -m elf_i386 main.o ../../std.o ../../string.o ../../network.o ../../dns.o  ../../dnstoys.o --output main
 	
+main.o:
+	fasm main.asm
+
 ../../std.o:
 	make -C ../.. std.o
 
@@ -21,4 +23,3 @@ main: ../../std.o ../../string.o ../../network.o ../../dns.o ../../dnstoys.o
 	
 clear:
 	rm main.o main
-

@@ -34,6 +34,13 @@ open:
 	mov edx, O_DIRECTORY
 	int 80h
 
+	cmp eax, -2
+	jne @f
+		mov [ebp+2*4], dword 0
+		postlude  
+		ret
+
+	@@:
 	mov [fd], eax
 
 	; fstat
