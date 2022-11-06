@@ -17,10 +17,12 @@ filename:
 		cmp [ebx+eax], byte '/'
 		je .break
 		cmp ebx, 0
-		je .break
+		je @f
 
 		dec ebx
 		jmp .loop
+	@@:
+		dec eax
 	.break:
 		add eax, ebx
 		inc eax
