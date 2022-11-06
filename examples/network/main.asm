@@ -15,14 +15,14 @@ hostname db "google.com", 0
 
 section '.text' executable
 _start:
-    call dnstoys.myip
-    call print.str
-    call print.nl
+	call dnstoys.myip
+	call print.str
+	call print.nl
 
-    push hostname
-    call network.get_ip
-    call network.IP_to_str
-    call print.str
-    call print.nl
+	push hostname
+	call network.get_ip
+	call network.IP_to_str
+	call print.str
+	call print.nl
 
-    call exit
+	call exit

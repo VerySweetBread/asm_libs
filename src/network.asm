@@ -1,6 +1,6 @@
 format ELF
-public get_ip       as 'network.get_ip'
-public IP_to_str    as 'network.IP_to_str'
+public get_ip	   as 'network.get_ip'
+public IP_to_str	as 'network.IP_to_str'
 
 include '../include/_macros.inc'
 include '../include/_dns.inc'
@@ -15,11 +15,11 @@ response	rb 200
 
 section '.network.text' executable
 get_ip:
-    prelude
+	prelude
 
 	push dword 200
 	push response
-    push DNS_server
+	push DNS_server
 	push dword [ebp+2*4]
 	call dns.send
 	push response
@@ -36,14 +36,14 @@ get_ip:
 	@@:
 	add eax, 2*3+4
 	
-    mov [ebp+2*4], eax
+	mov [ebp+2*4], eax
 	postlude
-    ret
+	ret
 
 IP_to_str:
-    prelude
+	prelude
 
-    mov ecx, [ebp+2*4]
+	mov ecx, [ebp+2*4]
 
 	xor ebx, ebx
 	mov esi, IP_str
@@ -85,6 +85,6 @@ IP_to_str:
 	  .break:
 		  mov [esi], byte 0
 
-    mov [ebp+2*4], dword IP_str
+	mov [ebp+2*4], dword IP_str
 	postlude
 	ret

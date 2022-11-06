@@ -6,41 +6,41 @@ include "../include/_macros.inc"
 
 section '.string.text' executable
 copy:
-    prelude
+	prelude
 
-    mov eax, [ebp+3*4]
-    mov ebx, [ebp+2*4]
-    xor ecx, ecx      
+	mov eax, [ebp+3*4]
+	mov ebx, [ebp+2*4]
+	xor ecx, ecx	  
 
-    .loop:
-        cmp [eax+ecx], byte 0
-        je .break
+	.loop:
+		cmp [eax+ecx], byte 0
+		je .break
 
-        mov dl, [eax+ecx]
-        mov [ebx+ecx], dl
-        inc ecx
-        
-        jmp .loop
-    .break:
-        mov eax, [ebp+4]
-        mov [ebp+3*4], eax
-        postlude
-        add esp, 4*2
-        ret
+		mov dl, [eax+ecx]
+		mov [ebx+ecx], dl
+		inc ecx
+		
+		jmp .loop
+	.break:
+		mov eax, [ebp+4]
+		mov [ebp+3*4], eax
+		postlude
+		add esp, 4*2
+		ret
 
 len:
-    prelude
+	prelude
 
-    mov eax, [ebp+2*4]
-    xor ebx, ebx
+	mov eax, [ebp+2*4]
+	xor ebx, ebx
 
-    .loop:
-        cmp [eax+ebx], byte 0
-        je .break
+	.loop:
+		cmp [eax+ebx], byte 0
+		je .break
 
-        inc ebx
-        jmp .loop
-    .break:
-        mov [ebp+2*4], ebx
-        postlude
-        ret
+		inc ebx
+		jmp .loop
+	.break:
+		mov [ebp+2*4], ebx
+		postlude
+		ret

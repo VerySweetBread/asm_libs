@@ -12,32 +12,32 @@ section '.strtab'
 dnstoys db "dns.toys", 0
 
 endpoints:
-    .ip db "ip", 0
+	.ip db "ip", 0
 
 section '.bss' writeable
-response	rb 200
+response rb 200
 DNS_server sockaddr 00,53, ?,?,?,?
 DNS_request dnsreq
 
 section '.dnstoys.text'
 myip:
-    push 0
-    prelude
+	push 0
+	prelude
 
-    push dnstoys
-    call network.get_ip
-    pop eax
-    mov eax, [eax]
-    mov [DNS_server+4], eax
+	push dnstoys
+	call network.get_ip
+	pop eax
+	mov eax, [eax]
+	mov [DNS_server+4], eax
 
-    push dword 200
+	push dword 200
 	push response
-    push DNS_server
+	push DNS_server
 	push endpoints.ip
-    call dns.send
+	call dns.send
 
-    push response
-    push dword 0
+	push response
+	push dword 0
 	call dns.get_field
 	pop eax
 	push eax
@@ -50,8 +50,8 @@ myip:
 	@@:
 	add eax, 2*3+4+1
 	
-    mov ebx, [ebp+2*4]
-    mov [ebp+4], ebx
-    mov [ebp+2*4], eax
+	mov ebx, [ebp+2*4]
+	mov [ebp+4], ebx
+	mov [ebp+2*4], eax
 	postlude
-    ret
+	ret

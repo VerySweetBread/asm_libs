@@ -21,4 +21,3 @@ main: ../../file.o ../../std.o ../../path.o ../../string.o
 
 clear:
 	rm main.o main
-
