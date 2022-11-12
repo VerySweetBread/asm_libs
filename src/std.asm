@@ -121,6 +121,7 @@ _int:
 
 	push 10
 	mov ebx, 10
+	xor edx, edx
 
 	@@:
 		cmp eax, 10

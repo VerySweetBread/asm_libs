@@ -19,7 +19,7 @@ response rb 200
 DNS_server sockaddr 00,53, ?,?,?,?
 DNS_request dnsreq
 
-section '.dnstoys.text'
+section '.dnstoys.text' executable
 myip:
 	push 0
 	prelude
