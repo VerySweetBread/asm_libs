@@ -39,15 +39,13 @@ _str:
 	prelude
 
 	mov ecx, [ebp+2*4]
-
-	xor edx, edx
+	mov edx, -1
 
 	@@:
-		cmp [ecx+edx], byte 0
-		je @f
 		inc edx
-		jmp @b
-	@@:
+		cmp [ecx+edx], byte 0
+		jne @b
+
 	mov eax, 4
 	mov ebx, 1
 	int 80h
@@ -166,7 +164,6 @@ _int:
 	postlude
 	add esp, 4
 	ret
-
 
 exit:
 	mov eax, 1
