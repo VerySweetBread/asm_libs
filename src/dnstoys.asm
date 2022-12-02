@@ -1,8 +1,8 @@
 format ELF
 public myip as 'dnstoys.myip'
 
-include '../include/_macros.inc'
-include '../include/_dns.inc'
+include '../include/macros.inc'
+include '../include/dns.inc'
 extrn network.get_ip
 extrn dns.send
 extrn dns.get_field

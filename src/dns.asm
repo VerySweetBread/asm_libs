@@ -2,8 +2,8 @@ format ELF
 public send 		as 'dns.send'
 public get_field 	as 'dns.get_field'
 
-include '../include/_macros.inc'
-include '../include/_dns.inc'
+include '../include/macros.inc'
+include '../include/dns.inc'
 extrn string.len
 
 

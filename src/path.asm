@@ -1,7 +1,7 @@
 format ELF
 public filename as 'path.filename'
 
-include '../include/_macros.inc'
+include '../include/macros.inc'
 extrn string.len
 
 section '.text' executable

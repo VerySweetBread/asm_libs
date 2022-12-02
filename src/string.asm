@@ -3,7 +3,7 @@ public copy 		as 'string.copy'
 public len  		as 'string.len'
 public parse_int	as 'string.parse_int'
 
-include "../include/_macros.inc"
+include "../include/macros.inc"
 
 section '.string.text' executable
 copy:

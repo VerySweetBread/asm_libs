@@ -3,8 +3,8 @@ public open	 as 'file.open'
 public close	as 'file.close'
 public content  as 'file.content'
 
-include '../include/_file.inc'
-include '../include/_macros.inc'
+include '../include/file.inc'
+include '../include/macros.inc'
 extrn string.len
 extrn string.copy
 extrn path.filename

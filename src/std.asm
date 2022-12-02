@@ -6,7 +6,7 @@ public _bin as 'print.bin'
 public _int as 'print.int'
 public exit
 
-include '../include/_macros.inc'
+include '../include/macros.inc'
 
 _new_line equ 10
 

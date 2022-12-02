@@ -2,8 +2,8 @@ format ELF
 public get_ip	   as 'network.get_ip'
 public IP_to_str	as 'network.IP_to_str'
 
-include '../include/_macros.inc'
-include '../include/_dns.inc'
+include '../include/macros.inc'
+include '../include/dns.inc'
 extrn dns.send
 extrn dns.get_field
 extrn string.len
