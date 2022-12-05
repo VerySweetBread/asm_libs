@@ -2,8 +2,10 @@ format ELF
 public copy 		as 'string.copy'
 public len  		as 'string.len'
 public parse_int	as 'string.parse_int'
+public concat		as 'string.concat'
 
 include "../include/macros.inc"
+extrn heap.add
 
 section '.string.text' executable
 copy:
@@ -82,3 +84,34 @@ parse_int:
 		mov [ebp+4*2], eax
 		postlude
 		ret
+
+concat:
+	prelude 
+
+	push dword [ebp+3*4]
+	call len
+	push dword [ebp+2*4]
+	call len
+	mov eax, [esp+4]
+	add [esp], eax
+	dec dword [esp]
+	call heap.add
+	pop eax
+	mov edx, eax
+	
+	push dword [ebp+3*4]
+	push eax
+	call copy
+
+	add eax, [esp]
+	mov ebx, [ebp+2*4]
+	mov [esp], ebx
+	push eax
+	call copy
+
+	mov eax, [ebp+4]
+	mov [ebp+2*4], eax
+	mov [ebp+3*4], edx
+	postlude
+	add esp, 4
+	ret

@@ -69,6 +69,7 @@ _bin:
 
 	push 2
 	mov ebx, 2
+	xor edx, edx
 
 	@@:
 		cmp eax, 2

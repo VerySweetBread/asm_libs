@@ -1,25 +1,13 @@
 all: main
 
-main: ../../std.o ../../string.o ../../network.o ../../dns.o ../../dnstoys.o main.o
-	ld -m elf_i386 main.o ../../std.o ../../string.o ../../network.o ../../dns.o  ../../dnstoys.o --output main
-	
+main: /lib/sbalib.so main.o
+	ld -m elf_i386 -dynamic-linker /lib/ld-linux.so.2 main.o /lib/sbalib.so -o main
+
 main.o:
-	fasm main.asm
+	fasm main.asm > /dev/null
 
-../../std.o:
-	make -C ../.. std.o
+/lib/sbalib.so:
+	make -C ../../
 
-../../string.o:
-	make -C ../.. string.o
-
-../../network.o:
-	make -C ../.. network.o
-
-../../dns.o:
-	make -C ../.. dns.o
-
-../../dnstoys.o:
-	make -C ../.. dnstoys.o
-	
 clear:
 	rm main.o main

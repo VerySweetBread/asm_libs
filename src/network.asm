@@ -26,15 +26,7 @@ get_ip:
 	push dword 0
 	call dns.get_field
 	pop eax
-	push eax
-	call string.len
-	pop ebx
-	add eax, ebx  
-	cmp ebx, 2
-	je @f
-		inc eax
-	@@:
-	add eax, 2*3+4
+	mov eax, [eax]
 	
 	mov [ebp+2*4], eax
 	postlude

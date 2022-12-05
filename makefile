@@ -1,25 +1,9 @@
-all: std.o string.o file.o path.o network.o dns.o dnstoys.o
+all: $(patsubst src/%.asm,%.o, $(wildcard src/*))
+	ld -m elf_i386 -shared *.o -o sbalib.so
+	cp sbalib.so /lib/
 
-std.o:
-	fasm src/std.asm std.o
-
-string.o:
-	fasm src/string.asm string.o
-
-file.o:
-	fasm src/file.asm file.o
-
-path.o:
-	fasm src/path.asm path.o
-
-network.o:
-	fasm src/network.asm network.o
-
-dns.o:
-	fasm src/dns.asm dns.o
-
-dnstoys.o:
-	fasm src/dnstoys.asm dnstoys.o
+%.o:
+	fasm $(patsubst %.o,src/%.asm,$@) $@ 		> /dev/null
 
 clear:
-	rm *.o
+	rm *.o sbalib.so

@@ -27,7 +27,6 @@ myip:
 	push dnstoys
 	call network.get_ip
 	pop eax
-	mov eax, [eax]
 	mov [DNS_server+4], eax
 
 	push dword 200

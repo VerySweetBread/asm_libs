@@ -1,22 +1,13 @@
 all: main
 
-main: ../../file.o ../../std.o ../../path.o ../../string.o main.o
-	ld -m elf_i386 main.o ../../file.o ../../std.o ../../path.o ../../string.o --output main
+main: /lib/sbalib.so main.o
+	ld -m elf_i386 -dynamic-linker /lib/ld-linux.so.2 main.o /lib/sbalib.so -o main
 
 main.o:
-	fasm main.asm
+	fasm main.asm > /dev/null
 
-../../std.o:
-	make -C ../.. std.o
-
-../../file.o:
-	make -C ../.. file.o
-
-../../path.o:
-	make -C ../.. path.o
-
-../../string.o:
-	make -C ../.. string.o
+/lib/sbalib.so:
+	make -C ../../
 
 clear:
 	rm main.o main
