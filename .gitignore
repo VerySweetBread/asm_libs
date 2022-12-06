@@ -1,2 +1,6 @@
 .fuse_hidden*
 tests
+*.o
+*.so
+main
+
